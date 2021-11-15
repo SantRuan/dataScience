@@ -12,23 +12,28 @@ def f(x):
 
 def bissecao(x1, xu, es, imax, xr, ea):
     iter=0
+    f1 = f(x1)
     while ea> es:
-        print(xold = xr) 
+        xold = xr
         xr = (x1 + xu) / 2
+        print(xr)
+        fr = f(xr)
         iter = iter + 1
-        if  f(x1) * f(xr):
-            x_bisect = xr
-        if f(x1) * f(xr) < 0:
+        test = f1*fr
+        if  xr != 0:
+            ea = (abs(xr - xold)/xr) * 100
+        if test < 0:
             xu = xr
-        elif f(x1) * f(xr) > 0:
+        elif test > 0:
             x1 = xr
+            f1 = fr
         else:
             ea = 0
-        if ea < es or iter >= imax:
-            break
+        return xr
 
 
 print(bissecao(0.5,2, 0.05, 30, 1.75,1))
+
 
 
 
